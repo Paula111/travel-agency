@@ -17,7 +17,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 
 
 
-const Trip = ({ error, name, image, cost, days, description, country, intro }) => {
+const Trip = ({ error, name, image, cost, days, description, country, intro, id }) => {
   if (error) return <NotFound />;
   else return (
     <Section>
@@ -69,6 +69,11 @@ const Trip = ({ error, name, image, cost, days, description, country, intro }) =
           </Row>
         </Grid>
       </DetailsBox>
+      <OrderForm
+        tripCost={cost}
+        tripId={id}
+        tripCountryCode={country.alpha3Code}
+      />
       <Grid>
         <Row>
           <Col xs={12}>
@@ -88,6 +93,7 @@ Trip.propTypes = {
   days: PropTypes.number,
   description: PropTypes.string,
   country: PropTypes.object,
+  id: PropTypes.string,
 };
 
 export default Trip;
